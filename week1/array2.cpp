@@ -1,28 +1,32 @@
-#include <iostream>
-#include <stdlib.h>
-using namespace std;
-int main() {
-   int n;
-        cout << "  enter array size: "<<endl;
-      cin >> n;
-  int arr[n], arr1[n], index_arr[n];
-   int index;
-       cout << "enter array elements: "<<endl;
-   for (int i = 0; i < n; i++)
-      cin >> arr[i];
-   for (int i = 0; i < n; i++)
-      index_arr[i] = 0;
-      for (int i = 0; i < n; i++) {
-      do {
-         index = rand() % n;
-      }
-      while (index_arr[index] != 0);
-      index_arr[index] = 1;
-      arr1[i] = arr[index];
-   }
-   cout<<" shuffled array: ";
 
-   for (int i = 0; i < n; i++)
-   cout << arr1[i] << " ";
-   return 0;
+#include<bits/stdc++.h>
+using namespace std;
+
+int getOddOccurrence(int arr[], int arr_size)
+{
+    for (int i = 0; i < arr_size; i++) {
+         
+        int count = 0;
+         
+        for (int j = 0; j < arr_size; j++)
+        {
+            if (arr[i] == arr[j])
+                count++;
+        }
+        if (count % 2 != 0)
+            return arr[i];
+    }
+    return -1;
 }
+
+int main()
+    {
+        int arr[] = { 2, 3, 5, 4, 5, 2,
+                      4, 3, 5, 2, 4, 4, 2 };
+        int n = sizeof(arr) / sizeof(arr[0]);
+ 
+        // Function calling
+        cout << getOddOccurrence(arr, n);
+ 
+        return 0;
+    }
